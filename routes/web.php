@@ -24,6 +24,8 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
     $router->get('me', 'AuthController@me');
     $router->get('account', 'AccountController@index');
     $router->post('account', 'AccountController@store');
+    $router->put('account', 'AccountController@update');
+    $router->get('bitcoin', 'BitcoinController');
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) {

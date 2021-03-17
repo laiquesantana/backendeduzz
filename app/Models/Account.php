@@ -19,4 +19,14 @@ class Account extends Model
     protected $fillable = [
         'balance', 'user_id'
     ];
+
+    protected $hidden = [
+        'id'
+    ];
+
+    public function getUserIdAttribute($value)
+    {
+        $user = User::findOrFail($value);
+        return $user->name;
+    }
 }
