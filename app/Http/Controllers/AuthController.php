@@ -23,10 +23,10 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-         'name' => 'required|unique:users,name,1,id',
-         'email' => 'required|email|unique:users,email,1,id',
-         'password' => 'required|confirmed'
-       ]);
+            'name' => 'required|unique:users,name,1,id',
+            'email' => 'required|email|unique:users,email,1,id',
+            'password' => 'required|confirmed'
+        ]);
 
         $name = $request->input('name');
         $password = Hash::make($request->input('password'));
@@ -97,7 +97,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 600
         ]);
     }
 }
