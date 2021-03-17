@@ -2,6 +2,8 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -19,6 +21,7 @@ $router->get('/', function () use ($router) {
 
 
 
-$router->get('/teste', function () use ($router) {
-    return 'teste';
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('register', 'AuthController@register');
+    $router->post('login', 'AuthController@login');
 });
